@@ -5,7 +5,16 @@ require('dotenv').config();
 
 // Initialize express
 const app = express();
+// Add this near the top with other requires
+const path = require('path');
 
+// Add this with other middleware
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Add this before your API routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 // Connect to database
 connectDB();
 
@@ -15,7 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-const path = require('path');
 app.use('/api', require(path.join(__dirname, 'routes', 'api')));
 
 // Basic route
