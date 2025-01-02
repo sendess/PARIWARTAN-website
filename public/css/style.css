@@ -5,6 +5,15 @@
     padding: 20px;
 }
 
+.nav_img{
+    margin-right: 20px;
+}
+
+.nav_img img{
+    height: 40px;
+    width: 40px;
+}
+
 .alert {
     display: none;
     margin-top: 20px;
